@@ -1,0 +1,30 @@
+{
+  "name": "angular-bootstrap-simple-chat",
+  "version": "0.0.1",
+  "authors": [
+    "Aitor Llamas Jimenez <aitorllj93@gmail.com>"
+  ],
+  "description": "Simple Chat Directive for AngularJS with Bootstrap",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angularjs",
+    "bootstrap",
+    "directive",
+    "chat"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.3.8",
+    "bootstrap": "~3.3.1",
+    "angularjs-scroll-glue": "~0.0.1"
+  }
+}
