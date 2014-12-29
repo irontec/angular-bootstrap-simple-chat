@@ -1,7 +1,8 @@
 {
   "name": "angular-bootstrap-simple-chat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "authors": [
+    "Irontec SL",
     "Aitor Llamas Jimenez <aitorllj93@gmail.com>"
   ],
   "description": "Simple Chat Directive for AngularJS with Bootstrap",
