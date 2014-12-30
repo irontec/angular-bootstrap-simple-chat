@@ -1,3 +1,9 @@
+# ``<irontec-simple-chat>``
+
+An AngularJS+Bootstrap Simple Chat Directive
+
+![AngularJS Chat](https://raw.githubusercontent.com/irontec/angular-bootstrap-simple-chat/master/icon.png "AngularJS Chat")
+
 # Usage
 ## Requirements
 
