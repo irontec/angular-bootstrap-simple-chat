@@ -11,32 +11,24 @@
 
     vm.messages = [
       {
-        'username': 'username1',
+        'username': 'Matt',
         'content': 'Hi!'
       },
       {
-        'username': 'username2',
-        'content': 'Hello!'
+        'username': 'Elisa',
+        'content': 'Whats up?'
       },
       {
-        'username': 'username2',
-        'content': 'Hello!'
+        'username': 'Matt',
+        'content': 'I found this nice AngularJS Directive'
       },
       {
-        'username': 'username2',
-        'content': 'Hello!'
-      },
-      {
-        'username': 'username2',
-        'content': 'Hello!'
-      },
-      {
-        'username': 'username2',
-        'content': 'Hello!'
+        'username': 'Elisa',
+        'content': 'Looks Great!'
       }
     ];
 
-    vm.username = 'username1';
+    vm.username = 'Matt';
 
     vm.sendMessage = function(message, username) {
       if(message && message !== '' && username) {

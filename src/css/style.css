@@ -1,15 +1,4 @@
-/* line 1, ../sass/style.scss */
-.col-md-2,
-.col-md-10 {
-  padding: 0;
-}
-
-/* line 6, ../sass/style.scss */
-.panel {
-  margin-bottom: 0;
-}
-
-/* line 10, ../sass/style.scss */
+/* line 2, ../sass/components/chat-window.scss */
 .chat-window {
   bottom: 0;
   float: right;
@@ -18,17 +7,27 @@
   right: 0;
   z-index: 9999;
 }
-/* line 18, ../sass/style.scss */
+/* line 10, ../sass/components/chat-window.scss */
 .chat-window .panel {
+  border: 0;
   border-radius: 5px 5px 0 0;
+  margin-bottom: 0;
 }
 
-/* line 23, ../sass/style.scss */
-.icon-minim {
+/* line 2, ../sass/components/chat-top-bar.scss */
+.chat-top-bar {
+  background: #666;
+  color: #fff;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+}
+/* line 9, ../sass/components/chat-top-bar.scss */
+.chat-top-bar .icon-minim {
   padding: 2px 10px;
 }
 
-/* line 27, ../sass/style.scss */
+/* line 2, ../sass/components/chat-msg-container.scss */
 .msg-container-base {
   background: #e5e5e5;
   margin: 0;
@@ -36,82 +35,65 @@
   overflow-x: hidden;
   padding: 0 10px 10px;
 }
-/* line 34, ../sass/style.scss */
+/* line 9, ../sass/components/chat-msg-container.scss */
 .msg-container-base::-webkit-scrollbar-track {
   background-color: #f5f5f5;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-/* line 39, ../sass/style.scss */
+/* line 14, ../sass/components/chat-msg-container.scss */
 .msg-container-base::-webkit-scrollbar {
   background-color: #f5f5f5;
   width: 12px;
 }
-/* line 44, ../sass/style.scss */
+/* line 19, ../sass/components/chat-msg-container.scss */
 .msg-container-base::-webkit-scrollbar-thumb {
   background-color: #555;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
-
-/* line 51, ../sass/style.scss */
-.top-bar {
-  background: #666;
-  color: #fff;
+/* line 24, ../sass/components/chat-msg-container.scss */
+.msg-container-base .msg-container {
+  display: flex;
   overflow: hidden;
   padding: 10px;
-  position: relative;
 }
 
-/* line 59, ../sass/style.scss */
-.msg-receive {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/* line 64, ../sass/style.scss */
-.msg-sent {
-  margin-right: 0;
-  padding-bottom: 20px !important;
-}
-/* line 68, ../sass/style.scss */
-.msg-sent time {
-  float: right;
-}
-
-/* line 73, ../sass/style.scss */
-.messages {
+/* line 2, ../sass/components/chat-msg.scss */
+.chat-msg {
   background: #fff;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   max-width: 100%;
   padding: 10px;
 }
-/* line 80, ../sass/style.scss */
-.messages p {
+/* line 9, ../sass/components/chat-msg.scss */
+.chat-msg p {
   font-size: 13px;
   margin: 0 0 .2rem;
 }
-/* line 85, ../sass/style.scss */
-.messages time {
+/* line 14, ../sass/components/chat-msg.scss */
+.chat-msg time {
   color: #ccc;
   font-size: 11px;
 }
-
-/* line 92, ../sass/style.scss */
-.msg-container {
-  display: flex;
-  overflow: hidden;
-  padding: 10px;
+/* line 19, ../sass/components/chat-msg.scss */
+.chat-msg .chat-msg-author {
+  display: block;
 }
-
-/* line 98, ../sass/style.scss */
-.base-sent {
-  align-items: flex-end;
-  justify-content: flex-end;
+/* line 23, ../sass/components/chat-msg.scss */
+.chat-msg.chat-msg-receive {
+  margin-right: 0;
+  padding-bottom: 20px;
 }
-
-/* line 103, ../sass/style.scss */
-.btn-group.dropup {
-  bottom: 0;
-  left: 0;
-  position: fixed;
+/* line 28, ../sass/components/chat-msg.scss */
+.chat-msg.chat-msg-sent {
+  margin-right: 0;
+  padding-bottom: 20px;
+}
+/* line 32, ../sass/components/chat-msg.scss */
+.chat-msg.chat-msg-sent .chat-msg-author {
+  text-align: right;
+}
+/* line 36, ../sass/components/chat-msg.scss */
+.chat-msg.chat-msg-sent time {
+  float: right;
 }
