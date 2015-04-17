@@ -2,21 +2,20 @@
 	'use strict';
 
 	angular.module('irontec.simpleChat', ['luegg.directives']);
-
 	angular.module('irontec.simpleChat').directive('irontecSimpleChat', SimpleChat);
 
 	function SimpleChat() {
-
 		var chatTemplate =
-			'<div class="row chat-window col-xs-5 col-md-3" ng-class="vm.theme" style="margin-left:10px;">' +
+			'<div ng-show="visible" class="row chat-window col-xs-5 col-md-3" ng-class="vm.theme" style="margin-left:10px;">' +
 			    '<div class="col-xs-12 col-md-12">' +
 			        '<div class="panel">' +
 			            '<div class="panel-heading chat-top-bar">' +
 				            '<div class="col-md-8 col-xs-8">' +
 				                '<h3 class="panel-title"><span class="fa fa-comment-o"></span> {{vm.title}}</h3>' +
 				            '</div>' +
-				            '<div class="col-md-4 col-xs-4" style="text-align: right;">' +
-				                '<span class="glyphicon" ng-class="vm.chatButtonClass" ng-click="vm.toggle()"></span>' +
+				            '<div class="col-md-4 col-xs-4 window-actions" style="text-align: right;">' +
+				                '<span class="fa" ng-class="vm.chatButtonClass" ng-click="vm.toggle()"></span>' +
+				                '<span class="fa fa-close" ng-click="vm.close()"></span>' +
 			                '</div>' +
 			            '</div>' +
 						'<div class="panel-body msg-container-base" ng-style="vm.panelStyle" scroll-glue>' +
@@ -54,7 +53,8 @@
 				submitButtonText: '@',
 				title: '@',
 				theme: '@',
-				submitFunction: '&'
+				submitFunction: '&',
+				visible: '='
 			},
 			link: link,
 			controller: ChatCtrl,
@@ -62,16 +62,16 @@
 		};
 
 		function link(scope) {
-			if(!scope.inputPlaceholderText) {
+			if (!scope.inputPlaceholderText) {
 				scope.inputPlaceholderText = 'Write your message here...';
 
 			}
 
-			if(!scope.submitButtonText || scope.submitButtonText === '') {
+			if (!scope.submitButtonText || scope.submitButtonText === '') {
 				scope.submitButtonText = 'Send';
 			}
 
-			if(!scope.title) {
+			if (!scope.title) {
 				scope.title = 'Chat';
 			}
 		}
@@ -82,8 +82,8 @@
 	ChatCtrl.$inject = ['$scope'];
 
 	function ChatCtrl($scope) {
-		var vm = this;
-		var isHidden = false;
+		var vm = this,
+		    isHidden = false;
 
 		vm.messages = $scope.messages;
 		vm.username = $scope.username;
@@ -92,16 +92,21 @@
 		vm.title = $scope.title;
 		vm.theme = 'chat-th-' + $scope.theme;
 		vm.writingMessage = '';
-		vm.submitFunction = function() {
-			$scope.submitFunction()(vm.writingMessage, vm.username);
-			vm.writingMessage = '';
-		};
-
 		vm.panelStyle = {'display': 'block'};
 		vm.chatButtonClass= 'fa-angle-double-down icon_minim';
 
-
 		vm.toggle = toggle;
+		vm.close = close;
+		vm.submitFunction = submitFunction;
+
+		function submitFunction() {
+			$scope.submitFunction()(vm.writingMessage, vm.username);
+			vm.writingMessage = '';
+		}
+
+		function close() {
+			$scope.visible = false;
+		}
 
 		function toggle() {
 			if(isHidden) {
@@ -113,10 +118,6 @@
 				vm.panelStyle = {'display': 'none'};
 				isHidden = true;
 			}
-
 		}
-
 	}
-
-
 })();

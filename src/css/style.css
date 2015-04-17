@@ -14,6 +14,14 @@
   margin-bottom: 0;
 }
 
+.chat-window .fa-close {
+  margin-left: 15px;
+}
+
+.chat-window .window-actions .fa {
+  cursor: pointer;
+}
+
 /* line 2, ../sass/components/chat-top-bar.scss */
 .chat-top-bar {
   background: #666;
