@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('irontec.simpleChat', ['luegg.directives']);
+	angular.module('irontec.simpleChat');
 	angular.module('irontec.simpleChat').directive('irontecSimpleChat', SimpleChat);
 
 	function SimpleChat() {
@@ -18,7 +18,7 @@
 				                '<span class="fa fa-close" ng-click="vm.close()"></span>' +
 			                '</div>' +
 			            '</div>' +
-						'<div class="panel-body msg-container-base" ng-style="vm.panelStyle" scroll-glue>' +
+						'<div class="panel-body msg-container-base" ng-style="vm.panelStyle">' +
 							'<div class="row msg-container" ng-repeat="message in vm.messages">' +
 			                    '<div class="col-md-12 col-xs-12">' +
 									'<div class="chat-msg" ng-class="vm.username === message.username ?' + " 'chat-msg-sent' : 'chat-msg-receive'" + '" chat-msg-sent">' +
@@ -74,14 +74,16 @@
 			if (!scope.title) {
 				scope.title = 'Chat';
 			}
+
+			scope.$msgContainer = $('.msg-container-base'); // BS angular $el jQuery lite won't work for scrolling
 		}
 
 		return directive;
 	}
 
-	ChatCtrl.$inject = ['$scope'];
+	ChatCtrl.$inject = ['$scope', '$timeout'];
 
-	function ChatCtrl($scope) {
+	function ChatCtrl($scope, $timeout) {
 		var vm = this,
 		    isHidden = false;
 
@@ -101,6 +103,9 @@
 
 		function submitFunction() {
 			$scope.submitFunction()(vm.writingMessage, vm.username);
+			$timeout(function() { // use $timeout so it runs after digest so new height will be included
+				$scope.$msgContainer.scrollTop($scope.$msgContainer[0].scrollHeight);
+			}, 200, false);
 			vm.writingMessage = '';
 		}
 

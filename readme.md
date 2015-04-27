@@ -24,7 +24,6 @@ bower install --save angular-bootstrap-simple-chat
 <!-- Dependencies -->
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <script src="bower_components/angularjs/angular.js"></script>
-<script src="bower_components/angularjs-scroll-glue/src/scrollglue.js"></script>
 
 <!-- Simple Chat -->
 <link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/style.css">
