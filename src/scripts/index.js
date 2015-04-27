@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('irontec.simpleChat');
+	angular.module('irontec.simpleChat', []);
 	angular.module('irontec.simpleChat').directive('irontecSimpleChat', SimpleChat);
 
 	function SimpleChat() {
