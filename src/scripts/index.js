@@ -103,10 +103,18 @@
 
 		function submitFunction() {
 			$scope.submitFunction()(vm.writingMessage, vm.username);
+			vm.writingMessage = '';
+			scrollToBottom();
+		}
+
+		$scope.$watch('messages.length', function() {
+			scrollToBottom();
+		});
+
+		function scrollToBottom() {
 			$timeout(function() { // use $timeout so it runs after digest so new height will be included
 				$scope.$msgContainer.scrollTop($scope.$msgContainer[0].scrollHeight);
 			}, 200, false);
-			vm.writingMessage = '';
 		}
 
 		function close() {
