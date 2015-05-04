@@ -87,6 +87,9 @@
 .chat-msg .chat-msg-author {
   display: block;
 }
+.chat-msg .chat-msg-author .date {
+  font-size: 80%;
+}
 /* line 23, ../sass/components/chat-msg.scss */
 .chat-msg.chat-msg-receive {
   margin-right: 0;

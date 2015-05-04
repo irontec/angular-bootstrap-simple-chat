@@ -23,7 +23,10 @@
 			                    '<div class="col-md-12 col-xs-12">' +
 									'<div class="chat-msg" ng-class="vm.username === message.username ?' + " 'chat-msg-sent' : 'chat-msg-receive'" + '" chat-msg-sent">' +
 										'<p>{{message.content}}</p>' +
-										'<strong class="chat-msg-author">{{message.username}}</strong>' +
+										'<div class="chat-msg-author">' +
+											'<strong>{{message.username}}</strong>&nbsp;' +
+											'<span class="date">{{message.date|date:\'hh:mm:a\'}}</span>' +
+										'</div>' +
 									'</div>' +
 								'</div>' +
 							'</div>' +
