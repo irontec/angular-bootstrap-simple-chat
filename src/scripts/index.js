@@ -65,7 +65,7 @@
 			controllerAs: 'vm'
 		};
 
-		function link(scope) {
+		function link(scope, element) {
 			if (!scope.inputPlaceholderText) {
 				scope.inputPlaceholderText = 'Write your message here...';
 
@@ -80,6 +80,7 @@
 			}
 
 			scope.$msgContainer = $('.msg-container-base'); // BS angular $el jQuery lite won't work for scrolling
+			scope.$chatInput = $(element).find('.chat-input');
 
 			var elWindow = scope.$msgContainer[0];
 			scope.$msgContainer.bind('scroll', _.throttle(function() {
@@ -125,7 +126,12 @@
 			scrollToBottom();
 		}
 
-		$scope.$watch('visible', scrollToBottom); // make sure scroll to bottom on visibility change w/ history items
+		$scope.$watch('visible', function() { // make sure scroll to bottom on visibility change w/ history items
+			scrollToBottom();
+			$timeout(function() {
+				$scope.$chatInput.focus();
+			}, 250);
+		});
 		$scope.$watch('messages.length', function() {
 			if (!$scope.historyLoading) scrollToBottom(); // don't scrollToBottom if just loading history
 		});
