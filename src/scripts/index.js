@@ -145,6 +145,7 @@
 				vm.chatButtonClass = 'fa-angle-double-down icon_minim';
 				vm.panelStyle = {'display': 'block'};
 				isHidden = false;
+				scrollToBottom();
 			} else {
 				vm.chatButtonClass = 'fa-expand icon_minim';
 				vm.panelStyle = {'display': 'none'};
