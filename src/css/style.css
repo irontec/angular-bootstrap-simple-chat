@@ -77,6 +77,7 @@
 .chat-msg p {
   font-size: 13px;
   margin: 0 0 .2rem;
+  word-wrap: break-word;
 }
 /* line 14, ../sass/components/chat-msg.scss */
 .chat-msg time {
