@@ -2,9 +2,9 @@
 	'use strict';
 
 	angular.module('irontec.simpleChat', []);
-	angular.module('irontec.simpleChat').directive('irontecSimpleChat', SimpleChat);
+	angular.module('irontec.simpleChat').directive('irontecSimpleChat', ['$timeout', SimpleChat]);
 
-	function SimpleChat() {
+	function SimpleChat($timeout) {
 		var chatTemplate =
 			'<div ng-show="visible" class="row chat-window col-xs-5 col-md-3" ng-class="vm.theme" style="margin-left:10px;">' +
 			    '<div class="col-xs-12 col-md-12">' +
@@ -57,7 +57,8 @@
 				title: '@',
 				theme: '@',
 				submitFunction: '&',
-				visible: '='
+				visible: '=',
+				infiniteScroll: '&'
 			},
 			link: link,
 			controller: ChatCtrl,
@@ -79,6 +80,20 @@
 			}
 
 			scope.$msgContainer = $('.msg-container-base'); // BS angular $el jQuery lite won't work for scrolling
+
+			var elWindow = scope.$msgContainer[0];
+			scope.$msgContainer.bind('scroll', _.throttle(function() {
+				var scrollHeight = elWindow.scrollHeight;
+				if (elWindow.scrollTop <= 10) {
+					scope.historyLoading = true; // disable jump to bottom
+					scope.$apply(scope.infiniteScroll);
+					$timeout(function() {
+						scope.historyLoading = false;
+						if (scrollHeight !== elWindow.scrollHeight) // don't scroll down if nothing new added
+							scope.$msgContainer.scrollTop(360); // scroll down for loading 4 messages
+					}, 150);
+				}
+			}, 300));
 		}
 
 		return directive;
@@ -110,8 +125,9 @@
 			scrollToBottom();
 		}
 
+		$scope.$watch('visible', scrollToBottom); // make sure scroll to bottom on visibility change w/ history items
 		$scope.$watch('messages.length', function() {
-			scrollToBottom();
+			if (!$scope.historyLoading) scrollToBottom(); // don't scrollToBottom if just loading history
 		});
 
 		function scrollToBottom() {

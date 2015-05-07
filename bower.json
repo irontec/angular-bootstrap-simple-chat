@@ -1,11 +1,12 @@
 {
   "name": "angular-bootstrap-simple-chat-af",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": [
     "Irontec SL",
-    "Aitor Llamas Jimenez <aitorllj93@gmail.com>"
+    "Aitor Llamas Jimenez <aitorllj93@gmail.com>",
+    "Austin Floyd <texsc98@gmail.com>"
   ],
-  "description": "Simple Chat Directive for AngularJS with Bootstrap",
+  "description": "Simple Chat Directive for AngularJS with Bootstrap with infinite scroll",
   "moduleType": [
     "globals"
   ],
@@ -30,6 +31,6 @@
   "dependencies": {
     "angular": "~1.3.x",
     "bootstrap": "~3.3.1",
-    "angularjs-scroll-glue": "~0.0.1"
+    "lodash": "2.4.x"
   }
 }
