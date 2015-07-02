@@ -84,6 +84,17 @@
   color: #ccc;
   font-size: 11px;
 }
+.chat-msg img.profile {
+  max-height: 36px;
+  max-width: 36px;
+  border-radius: 25px;
+}
+.chat-msg img.profile.pull-left {
+  margin-right: 5px;
+}
+.chat-msg img.profile.pull-right {
+  margin-left: 5px;
+}
 /* line 19, ../sass/components/chat-msg.scss */
 .chat-msg .chat-msg-author {
   display: block;

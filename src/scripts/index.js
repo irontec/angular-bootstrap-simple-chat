@@ -19,9 +19,11 @@
 			                '</div>' +
 			            '</div>' +
 						'<div class="panel-body msg-container-base" ng-style="vm.panelStyle">' +
-							'<div class="row msg-container" ng-repeat="message in vm.messages">' +
-			                    '<div class="col-md-12 col-xs-12">' +
-									'<div class="chat-msg" ng-class="vm.username === message.username ?' + " 'chat-msg-sent' : 'chat-msg-receive'" + '" chat-msg-sent">' +
+							'<div class="row msg-container" ng-repeat="message in vm.messages" ng-init="selfAuthored = vm.myUserId == message.fromUserId">' +
+			'<div class="col-md-12 col-xs-12">' +
+									'<div class="chat-msg" ng-class="{\'chat-msg-sent\': selfAuthored, \'chat-msg-recieved\': !selfAuthored}">' +
+										'<span class="hide">myUserId:{{vm.myUserId}}</span>' +
+										'<img ng-if="message.imageUrl" class="profile" ng-class="{\'pull-right\': selfAuthored, \'pull-left\': !selfAuthored}" ng-src="{{message.imageUrl}}" />' +
 										'<p>{{message.content}}</p>' +
 										'<div class="chat-msg-author">' +
 											'<strong>{{message.username}}</strong>&nbsp;' +
@@ -52,6 +54,7 @@
 			scope: {
 				messages: '=',
 				username: '=',
+				myUserId: '=',
 				inputPlaceholderText: '@',
 				submitButtonText: '@',
 				title: '@',
@@ -108,6 +111,7 @@
 
 		vm.messages = $scope.messages;
 		vm.username = $scope.username;
+		vm.myUserId = $scope.myUserId;
 		vm.inputPlaceholderText = $scope.inputPlaceholderText;
 		vm.submitButtonText = $scope.submitButtonText;
 		vm.title = $scope.title;
