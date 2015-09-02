@@ -1,8 +1,10 @@
+@import 'config';
 // Chat Container Class
+$chat-container-ignorespace: ($top-bar-height + $bottom-bar-height);
 .msg-container-base {
   background: #e5e5e5;
   margin: 0;
-  max-height: 300px;
+  height: calc(100% - #{$chat-container-ignorespace});
   overflow-x: hidden;
   padding: 0 10px 10px;
 

@@ -6,7 +6,7 @@
 
 	function SimpleChat($timeout) {
 		var chatTemplate =
-			'<div ng-show="visible" class="row chat-window col-xs-5 col-md-3" ng-class="vm.theme" style="margin-left:10px;">' +
+			'<div ng-show="visible" class="row chat-window col-xs-5 col-md-3" ng-class="vm.theme">' +
 			    '<div class="col-xs-12 col-md-12">' +
 			        '<div class="panel">' +
 			            '<div class="panel-heading chat-top-bar">' +
@@ -33,7 +33,7 @@
 								'</div>' +
 							'</div>' +
 						'</div>' +
-						'<div class="panel-footer">' +
+						'<div class="panel-footer chat-bottom-bar">' +
 							'<form style="display:inherit" ng-submit="vm.submitFunction()">' +
 								'<div class="input-group" >' +
 									'<input type="text" class="form-control input-sm chat-input" placeholder="{{vm.inputPlaceholderText}}" ng-model="vm.writingMessage" />' +
