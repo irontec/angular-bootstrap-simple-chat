@@ -6,7 +6,7 @@
 
 	function SimpleChat($timeout) {
 		var chatTemplate =
-			'<div ng-show="visible" class="row chat-window col-xs-5 col-md-3" ng-class="vm.theme">' +
+			'<div ng-show="visible" class="row chat-window col-xs-5 col-md-3 {{vm.theme}}" ng-class="{minimized: vm.isHidden}">' +
 			    '<div class="col-xs-12 col-md-12">' +
 			        '<div class="panel">' +
 			            '<div class="panel-heading chat-top-bar">' +
@@ -106,9 +106,9 @@
 	ChatCtrl.$inject = ['$scope', '$timeout'];
 
 	function ChatCtrl($scope, $timeout) {
-		var vm = this,
-		    isHidden = false;
+		var vm = this;
 
+        vm.isHidden = false;
 		vm.messages = $scope.messages;
 		vm.username = $scope.username;
 		vm.myUserId = $scope.myUserId;
@@ -151,15 +151,15 @@
 		}
 
 		function toggle() {
-			if(isHidden) {
+			if(vm.isHidden) {
 				vm.chatButtonClass = 'fa-angle-double-down icon_minim';
 				vm.panelStyle = {'display': 'block'};
-				isHidden = false;
+				vm.isHidden = false;
 				scrollToBottom();
 			} else {
 				vm.chatButtonClass = 'fa-expand icon_minim';
 				vm.panelStyle = {'display': 'none'};
-				isHidden = true;
+				vm.isHidden = true;
 			}
 		}
 	}

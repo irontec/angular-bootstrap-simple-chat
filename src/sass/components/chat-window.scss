@@ -1,3 +1,4 @@
+
 // Chat Window Class
 .chat-window {
   margin: 0;
@@ -14,5 +15,9 @@
     border-radius: 5px 5px 0 0;
     margin-bottom: 0;
     height: 100%;
+  }
+
+  &.minimized {
+
   }
 }
