@@ -14,6 +14,14 @@
   margin-bottom: 0;
 }
 
+.chat-window .fa-close {
+  margin-left: 15px;
+}
+
+.chat-window .window-actions .fa {
+  cursor: pointer;
+}
+
 /* line 2, ../sass/components/chat-top-bar.scss */
 .chat-top-bar {
   background: #666;
@@ -69,15 +77,30 @@
 .chat-msg p {
   font-size: 13px;
   margin: 0 0 .2rem;
+  word-wrap: break-word;
 }
 /* line 14, ../sass/components/chat-msg.scss */
 .chat-msg time {
   color: #ccc;
   font-size: 11px;
 }
+.chat-msg img.profile {
+  max-height: 36px;
+  max-width: 36px;
+  border-radius: 25px;
+}
+.chat-msg img.profile.pull-left {
+  margin-right: 5px;
+}
+.chat-msg img.profile.pull-right {
+  margin-left: 5px;
+}
 /* line 19, ../sass/components/chat-msg.scss */
 .chat-msg .chat-msg-author {
   display: block;
+}
+.chat-msg .chat-msg-author .date {
+  font-size: 80%;
 }
 /* line 23, ../sass/components/chat-msg.scss */
 .chat-msg.chat-msg-receive {

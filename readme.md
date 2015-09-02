@@ -24,7 +24,6 @@ bower install --save angular-bootstrap-simple-chat
 <!-- Dependencies -->
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 <script src="bower_components/angularjs/angular.js"></script>
-<script src="bower_components/angularjs-scroll-glue/src/scrollglue.js"></script>
 
 <!-- Simple Chat -->
 <link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/style.css">
@@ -47,7 +46,8 @@ angular.module('app', ['irontec.simpleChat']);
   submit-button-text="Send your message"
   title="Super Awesome Chat"
   theme="material"
-  submit-function="vm.sendMessage">
+  submit-function="vm.sendMessage"
+  visible="vm.visible">
 </irontec-simple-chat>
 ```
 
@@ -96,7 +96,7 @@ function Shell() {
       });
     }
   };
-
+  vm.visible = true;
 }
 ```
 
@@ -109,6 +109,7 @@ Message Format: {username: 'username', content: 'My message'}
 * title: String, text in the chat top title
 * theme: String, theme used for the chat
 * submit-function: Function in the controller to be launched on the new message submit. It receives two params: *message & username*
+* visible: Boolean, controls visibility on the page (required)
 
 ## Using themes
 * First, add the themes stylesheet to your index.html
