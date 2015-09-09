@@ -47,7 +47,8 @@ angular.module('app', ['irontec.simpleChat']);
   title="Super Awesome Chat"
   theme="material"
   submit-function="vm.sendMessage"
-  visible="vm.visible">
+  visible="vm.visible"
+  expand-on-new="vm.expandOnNew">
 </irontec-simple-chat>
 ```
 
@@ -97,12 +98,13 @@ function Shell() {
     }
   };
   vm.visible = true;
+  vm.expandOnNew = true;
 }
 ```
 
 ## Documentation
 ### Params
-* messages: array of messages to show.  
+* messages: array of messages to show.
 Message Format: {username: 'username', content: 'My message'}
 * username: username of the user using the app
 * input-placeholder-text: String, text in the input placeholder

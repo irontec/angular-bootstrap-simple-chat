@@ -61,7 +61,8 @@
 				theme: '@',
 				submitFunction: '&',
 				visible: '=',
-				infiniteScroll: '&'
+				infiniteScroll: '&',
+                expandOnNew: '='
 			},
 			link: link,
 			controller: ChatCtrl,
@@ -138,6 +139,9 @@
 		});
 		$scope.$watch('messages.length', function() {
 			if (!$scope.historyLoading) scrollToBottom(); // don't scrollToBottom if just loading history
+            if ($scope.expandOnNew && vm.isHidden) {
+                toggle();
+            }
 		});
 
 		function scrollToBottom() {
