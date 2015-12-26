@@ -11,3 +11,11 @@ gulp.task('templates', function () {
       }))
       .pipe(gulp.dest('./src/scripts'));
 });
+
+gulp.task('custom-template', function () {
+    return gulp.src('./sample/chatTemplate.html')
+        .pipe(gulpTemplateCache('chatTemplate.js', {
+            module: 'irontec.simpleChat'
+        }))
+        .pipe(gulp.dest('./sample'));
+});
