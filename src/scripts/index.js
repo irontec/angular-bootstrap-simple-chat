@@ -7,7 +7,7 @@
 	function SimpleChat($timeout) {
 		var directive = {
 			restrict: 'EA',
-			templateUrl: 'chatTemplate.html',
+			templateUrl: 'views/chatTemplate.html',
 			replace: true,
 			scope: {
 				messages: '=',
@@ -20,7 +20,7 @@
 				submitFunction: '&',
 				visible: '=',
 				infiniteScroll: '&',
-                expandOnNew: '='
+        expandOnNew: '='
 			},
 			link: link,
 			controller: ChatCtrl,
@@ -30,7 +30,6 @@
 		function link(scope, element) {
 			if (!scope.inputPlaceholderText) {
 				scope.inputPlaceholderText = 'Write your message here...';
-
 			}
 
 			if (!scope.submitButtonText || scope.submitButtonText === '') {
