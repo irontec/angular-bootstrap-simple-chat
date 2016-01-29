@@ -94,9 +94,9 @@
 				$scope.$chatInput.focus();
 			}, 250);
 		});
-		$scope.$watch('messages.length', function() {
+		$scope.$watch('messages.length', function(newValue, oldValue) {
 			if (!$scope.historyLoading) scrollToBottom(); // don't scrollToBottom if just loading history
-            if ($scope.expandOnNew && vm.isHidden) {
+            if ($scope.expandOnNew && vm.isHidden && (newValue !== oldValue)) {
                 toggle();
             }
 		});
