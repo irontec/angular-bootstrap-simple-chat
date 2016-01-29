@@ -66,7 +66,7 @@
 	function ChatCtrl($scope, $timeout) {
 		var vm = this;
 
-        vm.isHidden = false;
+        vm.isHidden = true;
 		vm.messages = $scope.messages;
 		vm.username = $scope.username;
 		vm.myUserId = $scope.myUserId;
