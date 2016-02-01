@@ -18,7 +18,7 @@
 	function SimpleChat($timeout, irontecSimpleChatConfig) {
 		var directive = {
 			restrict: 'EA',
-			templateUrl: irontecSimpleChatConfig.templateUrl || '' + 'chatTemplate.html',
+			templateUrl: (irontecSimpleChatConfig.templateUrl || '') + 'chatTemplate.html',
 			replace: true,
 			scope: {
 				messages: '=',
