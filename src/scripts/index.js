@@ -76,7 +76,7 @@
 		vm.theme = 'chat-th-' + $scope.theme;
 		vm.writingMessage = '';
 		vm.panelStyle = {'display': 'none'};
-		vm.chatButtonClass= 'fa-angle-double-down icon_minim';
+		vm.chatButtonClass= 'fa-expand icon_minim';
 
 		vm.toggle = toggle;
 		vm.close = close;
