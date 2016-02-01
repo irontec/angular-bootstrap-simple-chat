@@ -2,12 +2,23 @@
 	'use strict';
 
 	angular.module('irontec.simpleChat', []);
-	angular.module('irontec.simpleChat').directive('irontecSimpleChat', ['$timeout', SimpleChat]);
+	angular.module('irontec.simpleChat').provider('irontecSimpleChatConfig', [irontecSimpleChatProvider]);
+	angular.module('irontec.simpleChat').directive('irontecSimpleChat', ['$timeout', 'irontecSimpleChatConfig', SimpleChat]);
 
-	function SimpleChat($timeout) {
+	function irontecSimpleChatProvider() {
+		this.setTemplateUrl = function(templateUrl) {
+			this.templateUrl = templateUrl;
+		}
+
+		this.$get = [function() {
+			return this;
+		}];
+	}
+
+	function SimpleChat($timeout, irontecSimpleChatConfig) {
 		var directive = {
 			restrict: 'EA',
-			templateUrl: 'views/chatTemplate.html',
+			templateUrl: irontecSimpleChatConfig.templateUrl || '' + 'chatTemplate.html',
 			replace: true,
 			scope: {
 				messages: '=',

@@ -1,7 +1,11 @@
 (function() {
   'use strict';
 
-  angular.module('app', ['irontec.simpleChat']);
+  angular
+    .module('app', ['irontec.simpleChat'])
+    .config(function (irontecSimpleChatConfigProvider) {
+      // irontecSimpleChatConfigProvider.setTemplateUrl('path-to-folder/');
+    });
 
   angular.module('app').controller('Shell', Shell);
 
