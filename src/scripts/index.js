@@ -87,7 +87,15 @@
 		vm.theme = 'chat-th-' + $scope.theme;
 		vm.writingMessage = '';
 		vm.panelStyle = {'display': 'none'};
-		vm.chatButtonClass= 'fa-expand icon_minim';
+		var chatButtonMinim = "fa-expand icon_minim";
+		var chatButtonOpened = "fa-angle-double-down icon_minim";
+
+		if ($scope.theme === "angular-material"){
+			chatButtonMinim = "unfold_more";
+			chatButtonOpened = "unfold_less";
+		}
+
+		vm.chatButtonClass= chatButtonMinim;
 
 		vm.toggle = toggle;
 		vm.close = close;
@@ -124,12 +132,12 @@
 
 		function toggle() {
 			if(vm.isHidden) {
-				vm.chatButtonClass = 'fa-angle-double-down icon_minim';
+				vm.chatButtonClass = chatButtonOpened;
 				vm.panelStyle = {'display': 'block'};
 				vm.isHidden = false;
 				scrollToBottom();
 			} else {
-				vm.chatButtonClass = 'fa-expand icon_minim';
+				vm.chatButtonClass = chatButtonMinim;
 				vm.panelStyle = {'display': 'none'};
 				vm.isHidden = true;
 			}
