@@ -96,6 +96,9 @@
 			}, 250);
 		});
 		$scope.$watch('messages.length', function() {
+			//seems unnecessary, but it solved my problem.  Link between this.messages and $scope.messages was lost after initialization
+			vm.messages = $scope.messages;
+			
 			if (!$scope.historyLoading) scrollToBottom(); // don't scrollToBottom if just loading history
             if ($scope.expandOnNew && vm.isHidden) {
                 toggle();
