@@ -15,8 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/irontec/angular-bootstrap-simple-chat"
+    "url": "https://github.com/smirciat/angular-bootstrap-simple-chat"
   },
   "license": "MIT",
-  "homepage": "https://github.com/irontec/angular-bootstrap-simple-chat"
+  "homepage": "https://github.com/smirciat/angular-bootstrap-simple-chat"
 }
