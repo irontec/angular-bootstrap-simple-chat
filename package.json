@@ -1,6 +1,6 @@
 {
   "name": "angular-bootstrap-simple-chat",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Simple Chat Directive for AngularJS with Bootstrap with infinite scroll",
   "main": "gulpfile.js",
   "dependencies": {
@@ -15,8 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/irontec/angular-bootstrap-simple-chat"
+    "url": "https://github.com/smirciat/angular-bootstrap-simple-chat"
   },
   "license": "MIT",
-  "homepage": "https://github.com/irontec/angular-bootstrap-simple-chat"
+  "homepage": "https://github.com/smirciat/angular-bootstrap-simple-chat"
 }
