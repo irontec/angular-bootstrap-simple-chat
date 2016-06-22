@@ -8,7 +8,7 @@
 	function irontecSimpleChatProvider() {
 		this.setTemplateUrl = function(templateUrl) {
 			this.templateUrl = templateUrl;
-		}
+		};
 
 		this.$get = [function() {
 			return this;
@@ -24,6 +24,7 @@
 				messages: '=',
 				username: '=',
 				myUserId: '=',
+				status: '=',
 				inputPlaceholderText: '@',
 				submitButtonText: '@',
 				title: '@',
@@ -77,10 +78,11 @@
 	function ChatCtrl($scope, $timeout) {
 		var vm = this;
 
-        vm.isHidden = true;
+    vm.isHidden = true;
 		vm.messages = $scope.messages;
 		vm.username = $scope.username;
 		vm.myUserId = $scope.myUserId;
+		vm.status = $scope.status;
 		vm.inputPlaceholderText = $scope.inputPlaceholderText;
 		vm.submitButtonText = $scope.submitButtonText;
 		vm.title = $scope.title;
@@ -115,9 +117,9 @@
 		});
 		$scope.$watch('messages.length', function(newValue, oldValue) {
 			if (!$scope.historyLoading) scrollToBottom(); // don't scrollToBottom if just loading history
-            if ($scope.expandOnNew && vm.isHidden && (newValue !== oldValue)) {
-                toggle();
-            }
+      if ($scope.expandOnNew && vm.isHidden && (newValue !== oldValue)) {
+          toggle();
+      }
 		});
 
 		function scrollToBottom() {
@@ -131,7 +133,7 @@
 		}
 
 		function toggle() {
-			if(vm.isHidden) {
+			if (vm.isHidden) {
 				vm.chatButtonClass = chatButtonOpened;
 				vm.panelStyle = {'display': 'block'};
 				vm.isHidden = false;
