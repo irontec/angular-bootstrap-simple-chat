@@ -2,17 +2,29 @@
 	'use strict';
 
 	angular.module('irontec.simpleChat', []);
-	angular.module('irontec.simpleChat').directive('irontecSimpleChat', ['$timeout', SimpleChat]);
+	angular.module('irontec.simpleChat').provider('irontecSimpleChatConfig', [irontecSimpleChatProvider]);
+	angular.module('irontec.simpleChat').directive('irontecSimpleChat', ['$timeout', 'irontecSimpleChatConfig', SimpleChat]);
 
-	function SimpleChat($timeout) {
+	function irontecSimpleChatProvider() {
+		this.setTemplateUrl = function(templateUrl) {
+			this.templateUrl = templateUrl;
+		};
+
+		this.$get = [function() {
+			return this;
+		}];
+	}
+
+	function SimpleChat($timeout, irontecSimpleChatConfig) {
 		var directive = {
 			restrict: 'EA',
-			templateUrl: 'chatTemplate.html',
+			templateUrl: (irontecSimpleChatConfig.templateUrl || '') + 'chatTemplate.html',
 			replace: true,
 			scope: {
 				messages: '=',
 				username: '=',
 				myUserId: '=',
+				status: '=',
 				inputPlaceholderText: '@',
 				submitButtonText: '@',
 				title: '@',
@@ -20,7 +32,7 @@
 				submitFunction: '&',
 				visible: '=',
 				infiniteScroll: '&',
-                expandOnNew: '='
+        expandOnNew: '='
 			},
 			link: link,
 			controller: ChatCtrl,
@@ -30,7 +42,6 @@
 		function link(scope, element) {
 			if (!scope.inputPlaceholderText) {
 				scope.inputPlaceholderText = 'Write your message here...';
-
 			}
 
 			if (!scope.submitButtonText || scope.submitButtonText === '') {
@@ -67,17 +78,26 @@
 	function ChatCtrl($scope, $timeout) {
 		var vm = this;
 
-        vm.isHidden = false;
+    vm.isHidden = true;
 		vm.messages = $scope.messages;
 		vm.username = $scope.username;
 		vm.myUserId = $scope.myUserId;
+		vm.status = $scope.status;
 		vm.inputPlaceholderText = $scope.inputPlaceholderText;
 		vm.submitButtonText = $scope.submitButtonText;
 		vm.title = $scope.title;
 		vm.theme = 'chat-th-' + $scope.theme;
 		vm.writingMessage = '';
-		vm.panelStyle = {'display': 'block'};
-		vm.chatButtonClass= 'fa-angle-double-down icon_minim';
+		vm.panelStyle = {'display': 'none'};
+		var chatButtonMinim = "fa-expand icon_minim";
+		var chatButtonOpened = "fa-angle-double-down icon_minim";
+
+		if ($scope.theme === "angular-material"){
+			chatButtonMinim = "unfold_more";
+			chatButtonOpened = "unfold_less";
+		}
+
+		vm.chatButtonClass= chatButtonMinim;
 
 		vm.toggle = toggle;
 		vm.close = close;
@@ -95,11 +115,11 @@
 				$scope.$chatInput.focus();
 			}, 250);
 		});
-		$scope.$watch('messages.length', function() {
+		$scope.$watch('messages.length', function(newValue, oldValue) {
 			if (!$scope.historyLoading) scrollToBottom(); // don't scrollToBottom if just loading history
-            if ($scope.expandOnNew && vm.isHidden) {
-                toggle();
-            }
+      if ($scope.expandOnNew && vm.isHidden && (newValue !== oldValue)) {
+          toggle();
+      }
 		});
 
 		function scrollToBottom() {
@@ -113,13 +133,13 @@
 		}
 
 		function toggle() {
-			if(vm.isHidden) {
-				vm.chatButtonClass = 'fa-angle-double-down icon_minim';
+			if (vm.isHidden) {
+				vm.chatButtonClass = chatButtonOpened;
 				vm.panelStyle = {'display': 'block'};
 				vm.isHidden = false;
 				scrollToBottom();
 			} else {
-				vm.chatButtonClass = 'fa-expand icon_minim';
+				vm.chatButtonClass = chatButtonMinim;
 				vm.panelStyle = {'display': 'none'};
 				vm.isHidden = true;
 			}
